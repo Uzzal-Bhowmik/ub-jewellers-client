@@ -380,15 +380,15 @@ const Header = () => {
                         aria-label="open sidebar"
                         className="btn btn-square btn-ghost"
                       >
-                        <RiMenu2Fill className="text-xl" />
+                        <RiMenu2Fill className="text-3xl" />
                       </label>
                     </div>
-                    <div className="w-[38%] md:w-[25%] md:px-2 text-center">
+                    <div className="md:w-[25%] md:px-2 text-center mx-auto">
                       <Link to="/">
                         <img
                           src={logo}
                           alt="logo"
-                          className="w-full md:w-[210px] cursor-pointer"
+                          className="w-[50%] mx-auto md:w-[210px] cursor-pointer"
                         />
                       </Link>
                     </div>
@@ -454,7 +454,7 @@ const Header = () => {
                     </div>
 
                     <div className="md:w-[20%] flex justify-end items-center space-x-4 md:space-x-5 text-center ml-auto pr-1">
-                      <FiSearch
+                      {/* <FiSearch
                         className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out"
                         onClick={handleSearchIcon}
                         title="Search Products"
@@ -485,7 +485,7 @@ const Header = () => {
                             title="Login"
                           />
                         </Link>
-                      )}
+                      )} */}
 
                       {isAuthLoading ? (
                         <span className="loading loading-spinner loading-sm"></span>
@@ -562,7 +562,7 @@ const Header = () => {
 
                 {/* Main Navbar non sticky */}
                 <div
-                  className={`w-full navbar bg-white z-[1000]`}
+                  className={`w-full navbar bg-white z-[1000] flex justify-between items-center`}
                   data-aos="fade-down"
                   data-aos-duration="1200"
                 >
@@ -573,15 +573,15 @@ const Header = () => {
                         aria-label="open sidebar"
                         className="btn btn-square btn-ghost"
                       >
-                        <RiMenu2Fill className="text-xl" />
+                        <RiMenu2Fill className="text-3xl" />
                       </label>
                     </div>
-                    <div className="w-[38%] md:w-[25%] md:px-2 text-center">
+                    <div className="md:w-[25%] md:px-2 text-center mx-auto">
                       <Link to="/">
                         <img
                           src={logo}
                           alt="logo"
-                          className="w-full md:w-[210px] cursor-pointer"
+                          className="w-[50%] block mx-auto md:w-[210px] cursor-pointer"
                         />
                       </Link>
                     </div>
@@ -623,7 +623,7 @@ const Header = () => {
                     </div>
 
                     <div className="md:w-[20%] flex justify-end items-center space-x-4 md:space-x-5 text-center ml-auto">
-                      <FiSearch
+                      {/* <FiSearch
                         className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out"
                         onClick={handleSearchIcon}
                         title="Search products"
@@ -645,13 +645,13 @@ const Header = () => {
                           {user ? cartData?.length : 0}
                         </span>
                         <FiShoppingCart className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                      </div>
+                      </div> */}
 
-                      {!user && (
+                      {/* {!user && (
                         <Link to="/login" title="Login">
                           <FiUser className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
                         </Link>
-                      )}
+                      )} */}
 
                       <div>
                         {isAuthLoading ? (
