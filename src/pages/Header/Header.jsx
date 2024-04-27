@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import logo from "/logo.png";
-import {
-  FiPhone,
-  FiSearch,
-  FiUser,
-  FiShoppingCart,
-  FiHeart,
-} from "react-icons/fi";
+import { FiPhone, FiSearch, FiHeart } from "react-icons/fi";
 import {
   FaFacebookF,
   FaYoutube,
@@ -28,8 +22,14 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import Slider from "react-slick";
 import useSearchedProducts from "../../hooks/useSearchedProducts";
 import axios from "axios";
-import useCart from "../../hooks/useCart";
 import useUserInfo from "../../hooks/useUserInfo";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCartDrawer,
+  selectHeaderSearchBar,
+  toggleCartDrawer,
+  toggleHeaderSearchBar,
+} from "../../redux/features/toggleDrawerSlice/toggleDrawerSlice";
 
 const Header = () => {
   const { user, isAuthLoading, logOut } = useAuthContext();
@@ -38,11 +38,14 @@ const Header = () => {
   const [searchedProducts, isSearchLoading] = useSearchedProducts(searchText);
   const location = useLocation();
   const [navNotifications, setNavNotifications] = useState([]);
-  const [showRightDrawer, setShowRightDrawer] = useState(false);
-  const { cartData } = useCart();
   const [userFromDB, isUserLoading] = useUserInfo();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isAdminRoute, setIsAdminRoute] = useState(false);
+
+  const dispatch = useDispatch();
+  const showCartDrawer = useSelector(selectCartDrawer);
+
+  console.log(showCartDrawer);
 
   // fetch or update upper nav notifications
   useEffect(() => {
@@ -99,13 +102,10 @@ const Header = () => {
   }, []);
 
   // handle search bar
-  const [searchBar, setSearchBar] = useState("closed");
-  const handleSearchIcon = () => {
-    setSearchBar("open");
-  };
+  const showSearchBar = useSelector(selectHeaderSearchBar);
   useEffect(() => {
-    setSearchBar("closed");
-  }, [location]);
+    dispatch(toggleHeaderSearchBar(false));
+  }, [location, dispatch]);
 
   // react hashlink router scroll with offest
   const scrollWithOffset = (el) =>
@@ -237,13 +237,13 @@ const Header = () => {
           <div style={{ fontFamily: "var(--montserrat)" }}>
             <div
               className={`w-full min-h-[300px] fixed top-0 left-0 right-0 bg-white z-[1005] overflow-auto max-h-screen ${
-                searchBar === "open" ? "translate-y-0" : "translate-y-[-100%]"
+                showSearchBar ? "translate-y-0" : "translate-y-[-100%]"
               } transition-all duration-300 ease-in-out pt-2 pb-10`}
             >
               {/* close button */}
               <button
                 onClick={() => {
-                  setSearchBar("closed");
+                  dispatch(toggleHeaderSearchBar(false));
                   setSearchText("");
                   document.getElementById("search-input-field").value = "";
                 }}
@@ -314,7 +314,7 @@ const Header = () => {
                                 ))}
                               </Slider>
                             </div>
-                            <div className="px-8 space-y-5 md:hidden">
+                            <div className="px-8 space-y-5 md:hidden max-h-[80vh]">
                               {searchedProducts?.map((product) => (
                                 <div
                                   key={product._id}
@@ -352,11 +352,9 @@ const Header = () => {
             </div>
             <div
               className={`h-screen fixed top-0 left-0 right-0 bg-[rgba(0,0,0,.6)] z-[1004] ${
-                searchBar === "open"
-                  ? "opacity-1 visible"
-                  : "opacity-0 invisible"
+                showSearchBar ? "opacity-1 visible" : "opacity-0 invisible"
               } transition-all duration-200 ease-in-out cursor-pointer`}
-              onClick={() => setSearchBar("closed")}
+              onClick={() => dispatch(toggleHeaderSearchBar(false))}
             ></div>
           </div>
 
@@ -842,24 +840,26 @@ const Header = () => {
           {/* right side drawer for cart */}
           <div
             className={`w-[100%] md:w-[30%] bg-white md:border fixed top-0 right-0 bottom-0 z-[9999] md:rounded-tl-2xl md:rounded-bl-2xl ${
-              showRightDrawer ? "transform-x-0" : "translate-x-full"
+              showCartDrawer ? "transform-x-0" : "translate-x-full"
             } transition-all duration-300 ease-in-out`}
           >
             <div className={`relative`}>
               <button
                 className={`text-2xl absolute top-6 right-5`}
-                onClick={() => setShowRightDrawer(false)}
+                onClick={() => dispatch(toggleCartDrawer())}
               >
                 <TfiClose />
               </button>
             </div>
-            <RightSideDrawer setShowRightDrawer={setShowRightDrawer} />
+            <RightSideDrawer
+              setShowRightDrawer={() => dispatch(toggleCartDrawer())}
+            />
           </div>
           <div
             className={`h-screen fixed top-0 left-0 right-0 bg-[rgba(0,0,0,.6)] z-[1004] ${
-              showRightDrawer ? "opacity-1 visible" : "opacity-0 invisible"
+              showCartDrawer ? "opacity-1 visible" : "opacity-0 invisible"
             } transition-all duration-200 ease-in-out cursor-pointer`}
-            onClick={() => setShowRightDrawer(false)}
+            onClick={() => dispatch(toggleCartDrawer())}
           ></div>
         </div>
       )}

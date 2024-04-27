@@ -12,6 +12,7 @@
   "dependencies": {
     "@moxy/react-animate-text": "^1.0.0",
     "@moxy/react-split-text": "^1.0.1",
+    "@reduxjs/toolkit": "^2.2.3",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.3.0",
     "animate.css": "^4.1.1",
@@ -36,6 +37,7 @@
     "react-magnifier": "^3.0.4",
     "react-pagination-bar": "^2.0.1",
     "react-query": "^3.39.3",
+    "react-redux": "^9.1.1",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.21.1",
     "react-router-hash-link": "^2.4.3",

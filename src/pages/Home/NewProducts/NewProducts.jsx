@@ -19,8 +19,7 @@ const NewProducts = () => {
     filteredNewProducts?.sort(
       (a, b) => new Date(b.addedAt) - new Date(a.addedAt)
     );
-
-    setNewProducts(filteredNewProducts?.slice(0, 6));
+    setNewProducts(filteredNewProducts);
   }, [products]);
 
   return (
@@ -28,7 +27,7 @@ const NewProducts = () => {
       <SectionTitle title={"New Arrivals"} />
 
       {isProductsLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-16 gap-y-10 mt-14 mb-16 w-fit mx-auto">
+        <div className="grid grid-cols-2g gap-6 md:grid-cols-3 md:gap-x-16 gap-y-10 mt-14 mb-16 w-fit mx-auto">
           {/* iterate empty array of length 6 */}
           {[...Array(6)].map((_, idx) => (
             <CardSkeleton key={idx} height={"350px"} width={"330px"} />
@@ -36,7 +35,7 @@ const NewProducts = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-16 gap-y-10 md:gap-y-20 mt-14 mb-16 w-fit mx-auto">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-x-16 gap-y-10 md:gap-y-20 mt-14 mb-16 w-full">
             {newProducts?.map((product, counter) => (
               <ProductCard
                 counter={counter}
@@ -47,7 +46,7 @@ const NewProducts = () => {
           </div>
 
           <Link to="/shop">
-            <button className="btn btn-outline mx-auto block btn-wide">
+            <button className="btn btn-square btn-neutral mx-auto block w-[90%]">
               View all items
             </button>
           </Link>

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../pages/Header/Header";
-import Footer from "../pages/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 import TakeToLoginModal from "../components/TakeToLoginModal/TakeToLoginModal";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import BottomNavbar from "../components/BottomNavbar/BottomNavbar";
 
 const MainLayout = () => {
   // scroll to top on route change
@@ -32,10 +32,10 @@ const MainLayout = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pb-10">
       <Header />
+      <BottomNavbar /> {/* visible only on mobile devices */}
       <Outlet />
-      <Footer />
       <Toaster
         position="top-center"
         toastOptions={{

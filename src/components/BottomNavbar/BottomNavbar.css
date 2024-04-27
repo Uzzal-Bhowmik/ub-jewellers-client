@@ -1,0 +1,19 @@
+.bottom-nav p {
+  font-family: var(--poppins);
+}
+
+.bottom-nav > div .active p {
+  color: var(--pink-gold);
+  font-weight: bold;
+}
+
+.bottom-nav > div svg {
+  border-radius: 50%;
+  padding: 2px 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.bottom-nav > div .active svg {
+  background-color: var(--pink-gold);
+}
