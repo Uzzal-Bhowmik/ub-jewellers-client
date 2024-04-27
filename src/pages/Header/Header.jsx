@@ -45,8 +45,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const showCartDrawer = useSelector(selectCartDrawer);
 
-  console.log(showCartDrawer);
-
   // fetch or update upper nav notifications
   useEffect(() => {
     // un-comment to add new notification(reminder: notification array is in backend)
@@ -103,9 +101,6 @@ const Header = () => {
 
   // handle search bar
   const showSearchBar = useSelector(selectHeaderSearchBar);
-  useEffect(() => {
-    dispatch(toggleHeaderSearchBar(false));
-  }, [location, dispatch]);
 
   // react hashlink router scroll with offest
   const scrollWithOffset = (el) =>

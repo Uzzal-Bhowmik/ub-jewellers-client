@@ -14,11 +14,11 @@ const toggleDrawerSlice = createSlice({
     },
 
     toggleHeaderSearchBar: (state, action) => {
-      action.payload
-        ? (state.showHeaderSearchBar = action.payload)
-        : (state.showHeaderSearchBar = state.showHeaderSearchBar
-            ? false
-            : true);
+      if (action?.payload) {
+        state.showHeaderSearchBar = action.payload;
+      } else {
+        state.showHeaderSearchBar = state.showHeaderSearchBar ? false : true;
+      }
     },
   },
 });

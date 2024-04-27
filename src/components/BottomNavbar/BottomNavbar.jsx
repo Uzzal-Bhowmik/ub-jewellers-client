@@ -12,9 +12,11 @@ import {
   toggleCartDrawer,
   toggleHeaderSearchBar,
 } from "../../redux/features/toggleDrawerSlice/toggleDrawerSlice";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const BottomNavbar = () => {
   const dispatch = useDispatch();
+  const { user } = useAuthContext();
 
   return (
     <div className="md:hidden w-full bg-white fixed bottom-0 min-h-[60px] flex items-center z-[9998] border-t border-t-gray-400 m-0 bottom-nav">
@@ -66,18 +68,20 @@ const BottomNavbar = () => {
           <p>Search</p>
         </div>
 
-        <NavLink
-          to="/login"
-          className={`${({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "active"
-              : ""} flex flex-col items-center justify-center`}
-        >
-          <FiUser className="" />
-          <p>Profile</p>
-        </NavLink>
+        {!user?.uid && (
+          <NavLink
+            to="/login"
+            className={`${({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "active"
+                : ""} flex flex-col items-center justify-center`}
+          >
+            <FiUser className="" />
+            <p>Profile</p>
+          </NavLink>
+        )}
       </div>
     </div>
   );

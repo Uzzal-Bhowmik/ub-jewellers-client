@@ -35,7 +35,7 @@ const NewProducts = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-x-16 gap-y-10 md:gap-y-20 mt-14 mb-16 w-full">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-x-16 gap-y-10 md:gap-y-20 mt-14 mb-16 max-w-[95%] mx-auto">
             {newProducts?.map((product, counter) => (
               <ProductCard
                 counter={counter}

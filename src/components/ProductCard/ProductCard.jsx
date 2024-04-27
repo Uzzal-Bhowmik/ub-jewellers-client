@@ -79,7 +79,7 @@ const ProductCard = ({ cardData, flashSale, counter }) => {
   return (
     <div
       className={`${
-        flashSale ? "w-[270px]" : isMobile ? "w-[200px]" : "max-w-[330px]"
+        flashSale ? "w-[270px]" : isMobile ? "w-[170px]" : "max-w-[330px]"
       } product-card mx-auto rounded-lg`}
       style={{ fontFamily: "var(--poppins)" }}
       data-aos="fade-up"
@@ -89,7 +89,7 @@ const ProductCard = ({ cardData, flashSale, counter }) => {
         <Link to={`/products/${_id}/description`} state={{ from: "/" }}>
           <div
             className={`product-img-overlay ${
-              flashSale ? "w-[270px]" : isMobile ? "w-[200px]" : "max-w-[330px]"
+              flashSale ? "w-[270px]" : isMobile ? "w-[170px]" : "max-w-[330px]"
             } rounded-lg`}
           ></div>
         </Link>
@@ -100,7 +100,7 @@ const ProductCard = ({ cardData, flashSale, counter }) => {
             flashSale
               ? "w-[270px] h-[260px]"
               : isMobile
-              ? "w-[200px]"
+              ? "w-[170px]"
               : "max-w-[330px] h-[350px]"
           } bg-[#ebebed] rounded-lg product-img`}
         />

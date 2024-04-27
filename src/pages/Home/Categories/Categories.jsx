@@ -4,6 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import axios from "axios";
 import CategoryCard from "./CategoryCard/CategoryCard";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -60,9 +61,12 @@ const Categories = () => {
               </div>
             ))
           : categories.slice(0, 8).map((category) => (
-              <div
+              <Link
                 className="gap-4 flex flex-col items-center justify-center"
                 key={category._id}
+                to={`/shop`}
+                state={{ category: category.categoryName }}
+                data-aos="fade-up"
               >
                 <div className="avatar">
                   <div className="w-20 rounded-full ring ring-slate-300">
@@ -75,7 +79,7 @@ const Categories = () => {
                 >
                   <p>{category.categoryName}</p>
                 </div>
-              </div>
+              </Link>
             ))}
       </div>
     </section>
