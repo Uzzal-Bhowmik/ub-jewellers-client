@@ -19,7 +19,7 @@ const BottomNavbar = () => {
   const { user } = useAuthContext();
 
   return (
-    <div className="md:hidden w-full bg-white fixed bottom-0 min-h-[60px] flex items-center z-[9998] border-t border-t-gray-400 m-0 bottom-nav">
+    <div className="md:hidden w-full bg-white fixed bottom-0 min-h-[60px] flex items-center z-[9998] border-t border-t-gray-400 rounded-t-2xl m-0 bottom-nav">
       <div className="flex items-center justify-around w-full py-5">
         <NavLink
           to="/"
