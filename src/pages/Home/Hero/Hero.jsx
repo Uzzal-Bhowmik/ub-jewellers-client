@@ -21,6 +21,7 @@ const Hero = () => {
   const settings = {
     arrows: false,
     fade: true,
+    dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,

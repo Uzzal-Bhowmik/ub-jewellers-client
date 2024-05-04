@@ -364,24 +364,16 @@ const Header = () => {
               <div className="drawer-content flex flex-col">
                 {/* Sticky Navbar visible on scroll*/}
                 <div
-                  className={`w-full navbar opacity-0 invisible fixed top-0 left-0 bg-white ${stickyNav} shadow-lg`}
+                  className={`w-full navbar opacity-0 invisible fixed top-0 left-0 bg-white ${stickyNav} shadow-lg px-4`}
                 >
                   <div className="md:container text-center">
-                    <div className="flex-none lg:hidden">
-                      <label
-                        htmlFor="my-drawer-3"
-                        aria-label="open sidebar"
-                        className="btn btn-square btn-ghost"
-                      >
-                        <RiMenu2Fill className="text-3xl" />
-                      </label>
-                    </div>
-                    <div className="md:w-[25%] md:px-2 text-center mx-auto">
+                    {/* logo */}
+                    <div className="w-[40%] md:w-[25%] md:px-2">
                       <Link to="/">
                         <img
                           src={logo}
                           alt="logo"
-                          className="w-[50%] mx-auto md:w-[210px] cursor-pointer"
+                          className="md:w-[210px] cursor-pointer"
                         />
                       </Link>
                     </div>
@@ -446,40 +438,11 @@ const Header = () => {
                       </ul>
                     </div>
 
-                    <div className="md:w-[20%] flex justify-end items-center space-x-4 md:space-x-5 text-center ml-auto pr-1">
-                      {/* <FiSearch
-                        className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out"
-                        onClick={handleSearchIcon}
-                        title="Search Products"
+                    <div className="md:w-[20%] flex justify-end items-center space-x-4 md:space-x-5 text-center ml-auto">
+                      <FiSearch
+                        className="text-2xl"
+                        onClick={() => dispatch(toggleHeaderSearchBar())}
                       />
-                      <Link
-                        to="/wishlist"
-                        className="hidden md:inline"
-                        title="Wishlist"
-                      >
-                        <FiHeart className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                      </Link>
-
-                      <div
-                        className="indicator"
-                        onClick={() => setShowRightDrawer(true)}
-                        title="Cart"
-                      >
-                        <span className="indicator-item badge badge-sm md:badge-md bg-[var(--pink-gold)] text-white border-none font-bold">
-                          {user ? cartData?.length : 0}
-                        </span>
-                        <FiShoppingCart className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                      </div>
-
-                      {!user && (
-                        <Link to="/login">
-                          <FiUser
-                            className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out"
-                            title="Login"
-                          />
-                        </Link>
-                      )} */}
-
                       {isAuthLoading ? (
                         <span className="loading loading-spinner loading-sm"></span>
                       ) : (
@@ -555,26 +518,18 @@ const Header = () => {
 
                 {/* Main Navbar non sticky */}
                 <div
-                  className={`w-full navbar bg-white z-[1000] flex justify-between items-center`}
+                  className={`w-full navbar bg-white z-[1000] flex justify-between items-center pl-4`}
                   data-aos="fade-down"
                   data-aos-duration="1200"
                 >
                   <div className="w-full md:container text-center">
-                    <div className="flex-none lg:hidden">
-                      <label
-                        htmlFor="my-drawer-3"
-                        aria-label="open sidebar"
-                        className="btn btn-square btn-ghost"
-                      >
-                        <RiMenu2Fill className="text-3xl" />
-                      </label>
-                    </div>
-                    <div className="md:w-[25%] md:px-2 text-center mx-auto">
+                    {/* logo */}
+                    <div className="w-[40%] md:w-[25%] md:px-2">
                       <Link to="/">
                         <img
                           src={logo}
                           alt="logo"
-                          className="w-[50%] block mx-auto md:w-[210px] cursor-pointer"
+                          className="md:w-[210px] cursor-pointer"
                         />
                       </Link>
                     </div>
@@ -616,36 +571,10 @@ const Header = () => {
                     </div>
 
                     <div className="md:w-[20%] flex justify-end items-center space-x-4 md:space-x-5 text-center ml-auto">
-                      {/* <FiSearch
-                        className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out"
-                        onClick={handleSearchIcon}
-                        title="Search products"
+                      <FiSearch
+                        className="text-2xl"
+                        onClick={() => dispatch(toggleHeaderSearchBar())}
                       />
-                      <Link
-                        to="/wishlist"
-                        className="hidden md:inline"
-                        title="Wishlist"
-                      >
-                        <FiHeart className="text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                      </Link>
-
-                      <div
-                        className="indicator"
-                        onClick={() => setShowRightDrawer(true)}
-                        title="Cart"
-                      >
-                        <span className="indicator-item badge badge-sm md:badge-md bg-[var(--pink-gold)] text-white border-none font-bold">
-                          {user ? cartData?.length : 0}
-                        </span>
-                        <FiShoppingCart className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                      </div> */}
-
-                      {/* {!user && (
-                        <Link to="/login" title="Login">
-                          <FiUser className="text-xl md:text-2xl cursor-pointer hover:text-[var(--deep-yellow)] transition-colors duration-150 ease-out" />
-                        </Link>
-                      )} */}
-
                       <div>
                         {isAuthLoading ? (
                           <span className="loading loading-spinner loading-sm"></span>
@@ -720,114 +649,6 @@ const Header = () => {
               </div>
 
               {/* sidebar on visible mobile*/}
-              <div className="drawer-side z-[1010]">
-                <ul className="menu w-full min-h-screen bg-base-100 flex flex-col justify-center items-center space-y-5 relative mobile-navbar">
-                  <div
-                    className={`absolute top-5 right-5 ${
-                      isOpen ? "animate-bounce-top" : ""
-                    }`}
-                  >
-                    <TfiClose
-                      className="text-3xl"
-                      onClick={handleLinkClicked}
-                    />
-                  </div>
-
-                  {/* Sidebar content here */}
-                  <div className="space-y-8 text-center">
-                    <HashLink
-                      to="/"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Home
-                    </HashLink>
-                    <HashLink
-                      to="/#categories"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Categories
-                    </HashLink>
-                    <div
-                      className={`flex items-center justify-center gap-1 text-center ${
-                        isOpen ? "animate-slide-left" : ""
-                      }`}
-                    >
-                      <HashLink
-                        to="/#flashsale"
-                        className={`block`}
-                        onClick={handleLinkClicked}
-                        scroll={(el) => scrollWithOffset(el)}
-                        smooth
-                      >
-                        Sale
-                      </HashLink>
-                      <div
-                        className={`badge badge-warning text-white rounded-md uppercase font-bold`}
-                        style={{
-                          fontFamily: "var(--montserrat)",
-                          fontSize: "10px",
-                        }}
-                      >
-                        Hot
-                      </div>
-                    </div>
-                    <HashLink
-                      to="/#products"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Products
-                    </HashLink>
-                    <HashLink
-                      to="/shop"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Shop
-                    </HashLink>
-                    <HashLink
-                      to="/wishlist"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      <div className="flex flex-row-reverse items-center gap-2">
-                        <FiHeart />
-                        Wishlist
-                      </div>
-                    </HashLink>
-                    <HashLink
-                      to="/#reviews"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Reviews
-                    </HashLink>
-                    <HashLink
-                      to="/#connect"
-                      className={`block ${isOpen ? "animate-slide-left" : ""}`}
-                      onClick={handleLinkClicked}
-                      scroll={(el) => scrollWithOffset(el)}
-                      smooth
-                    >
-                      Connect Us
-                    </HashLink>
-                  </div>
-                </ul>
-              </div>
             </div>
           </nav>
           {/* Navigation Bar End */}

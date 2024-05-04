@@ -3,15 +3,12 @@ import "./BottomNavbar.css";
 import {
   FiUser,
   FiShoppingCart,
-  FiSearch,
   FiHome,
   FiHeart,
+  FiShoppingBag,
 } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import {
-  toggleCartDrawer,
-  toggleHeaderSearchBar,
-} from "../../redux/features/toggleDrawerSlice/toggleDrawerSlice";
+import { toggleCartDrawer } from "../../redux/features/toggleDrawerSlice/toggleDrawerSlice";
 import useAuthContext from "../../hooks/useAuthContext";
 
 const BottomNavbar = () => {
@@ -19,8 +16,8 @@ const BottomNavbar = () => {
   const { user } = useAuthContext();
 
   return (
-    <div className="md:hidden w-full bg-white fixed bottom-0 min-h-[60px] flex items-center z-[9998] border-t border-t-gray-400 rounded-t-2xl m-0 bottom-nav">
-      <div className="flex items-center justify-around w-full py-5">
+    <div className="md:hidden w-full bg-white fixed bottom-0 flex items-center z-[9998] m-0 bottom-nav border-t-2 border-t-slate-200">
+      <div className="flex items-center justify-around w-full py-[6px]">
         <NavLink
           to="/"
           className={`${({ isActive, isPending }) =>
@@ -32,6 +29,19 @@ const BottomNavbar = () => {
         >
           <FiHome className="" />
           <p>Home</p>
+        </NavLink>
+
+        <NavLink
+          to="/shop"
+          className={`${({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "active"
+              : ""} flex flex-col items-center justify-center`}
+        >
+          <FiShoppingBag className="" />
+          <p>Shop</p>
         </NavLink>
 
         <div
@@ -54,19 +64,6 @@ const BottomNavbar = () => {
           <FiHeart className="" />
           <p>Wishlist</p>
         </NavLink>
-
-        <div
-          className={`${({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "active"
-              : ""} flex flex-col items-center justify-center`}
-          onClick={() => dispatch(toggleHeaderSearchBar())}
-        >
-          <FiSearch className="" />
-          <p>Search</p>
-        </div>
 
         {!user?.uid && (
           <NavLink
