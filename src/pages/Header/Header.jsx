@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import logo from "/logo.png";
-import { FiPhone, FiSearch, FiHeart } from "react-icons/fi";
+import { FiPhone, FiSearch } from "react-icons/fi";
 import {
   FaFacebookF,
   FaYoutube,
@@ -9,7 +9,6 @@ import {
   FaLinkedin,
   FaPinterest,
 } from "react-icons/fa6";
-import { RiMenu2Fill } from "react-icons/ri";
 import { TfiClose } from "react-icons/tfi";
 import Textra from "react-textra";
 import { HashLink } from "react-router-hash-link";
@@ -60,16 +59,6 @@ const Header = () => {
       .then((res) => setNavNotifications(res.data))
       .catch((error) => console.error(error));
   }, []);
-
-  // to close drawer(on mobile devices) upon link click
-  const [isOpen, setIsOpen] = useState(false);
-  document.getElementById("my-drawer-3")?.addEventListener("click", () => {
-    setIsOpen(true);
-  });
-  const handleLinkClicked = () => {
-    document.getElementById("my-drawer-3")?.click();
-    setIsOpen(false);
-  };
 
   // change nav-style on scroll
   const changeNavStyle = () => {
